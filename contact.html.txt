@@ -1,76 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Contact Rena</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      padding: 20px;
-    }
-    .container {
-      max-width: 600px;
-      margin: auto;
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-      text-align: center;
-    }
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-    button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 12px;
-      background: #007BFF;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-    button:hover {
-      background: #0056b3;
-      cursor: pointer;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact Form</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+  }
+  .container {
+    display: flex;
+    max-width: 900px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  form {
+    flex: 2;
+    padding-right: 30px;
+  }
+  h2 {
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .row {
+    display: flex;
+    gap: 15px;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    width: 100%;
+    padding: 8px 10px;
+    margin: 6px 0 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+    resize: vertical;
+  }
+  textarea {
+    height: 100px;
+  }
+  label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .checkbox-group,
+  .radio-group {
+    margin-bottom: 20px;
+  }
+  .checkbox-group label,
+  .radio-group label {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    cursor: pointer;
+  }
+  .checkbox-group input,
+  .radio-group input {
+    margin-right: 8px;
+  }
+  .address-section {
+    flex: 1;
+    background: #222;
+    color: #eee;
+    padding: 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .address-section h3 {
+    margin-top: 0;
+    font-weight: bold;
+  }
+  .phone {
+    margin: 15px 0;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .linkedin-icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: #0a66c2;
+    mask: url('https://cdn-icons-png.flaticon.com/512/174/174857.png') no-repeat center;
+    -webkit-mask: url('https://cdn-icons-png.flaticon.com/512/174/174857.png') no-repeat center;
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    cursor: pointer;
+  }
+  button {
+    background-color: #222;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  button:hover {
+    background-color: #444;
+  }
+</style>
 </head>
 <body>
 
-  <div class="container">
-    <h2>Contact Rena</h2>
-    <form action="https://formspree.io/f/xanjzkja" method="POST" enctype="multipart/form-data">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required>
+<div class="container">
+  <form>
+    <h2>Send Message</h2>
+    <div class="row">
+      <div style="flex: 1;">
+        <label for="firstName">First Name *</label>
+        <input type="text" id="firstName" name="firstName" placeholder="E.g. John" required />
+      </div>
+      <div style="flex: 1;">
+        <label for="lastName">Last Name *</label>
+        <input type="text" id="lastName" name="lastName" placeholder="E.g. Doe" required />
+      </div>
+    </div>
+    <label for="email">Email Address *</label>
+    <input type="email" id="email" name="email" placeholder="E.g. john@doe.com" required />
+    
+    <label for="phone">Phone Number *</label>
+    <input type="tel" id="phone" name="phone" placeholder="E.g. +1 3004005000" required />
+    
+    <label for="notes">Additional notes</label>
+    <textarea id="notes" name="notes" maxlength="180" placeholder="Please tell us about your project."></textarea>
+    <div style="text-align:right; font-size:12px; color:#666;">0 / 180</div>
 
-      <label for="company">Company</label>
-      <input type="text" id="company" name="company">
+    <div class="checkbox-group">
+      <label>Select All Services Required</label>
+      <label><input type="checkbox" name="services" value="CNC" /> CNC</label>
+      <label><input type="checkbox" name="services" value="3D Printing" /> 3D Printing</label>
+      <label><input type="checkbox" name="services" value="Vacuum casting" /> Vacuum casting</label>
+      <label><input type="checkbox" name="services" value="Bending, Stamping, and Extrusions" /> Bending, Stamping, and Extrusions</label>
+      <label><input type="checkbox" name="services" value="Rapid Tooling" /> Rapid Tooling</label>
+      <label><input type="checkbox" name="services" value="Die Casting" /> Die Casting</label>
+      <label><input type="checkbox" name="services" value="Injection Molding" /> Injection Molding</label>
+      <label><input type="checkbox" name="services" value="Forging" /> Forging</label>
+      <label><input type="checkbox" name="services" value="Prototyping" /> Prototyping</label>
+      <label><input type="checkbox" name="services" value="Other" /> Other</label>
+    </div>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="_replyto" required>
+    <div class="radio-group">
+      <label>Would You Like A Quote?</label>
+      <label><input type="radio" name="quote" value="Yes" /> Yes</label>
+      <label><input type="radio" name="quote" value="No" /> No</label>
+    </div>
 
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
+    <button type="submit">Send</button>
+  </form>
 
-      <label for="file">Upload File</label>
-      <input type="file" id="file" name="attachment">
+  <div class="address-section">
+    <h3>Address</h3>
+    <p>8710 Business Circle #10-12<br />Converse, TX. 78109</p>
 
-      <button type="submit">Submit</button>
-    </form>
+    <h3>Phone</h3>
+    <p class="phone"> +86 18470318905</p>
+
+    <a href="https://www.linkedin.com/in/rena-zhu-398b62201/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <span class="linkedin-icon"></span>
+    </a>
   </div>
+</div>
+
+<script>
+  // 限制并显示备注字数
+  const notes = document.getElementById('notes');
+  const counter = notes.nextElementSibling;
+  notes.addEventListener('input', () => {
+    const len = notes.value.length;
+    counter.textContent = `${len} / 180`;
+  });
+</script>
 
 </body>
 </html>
